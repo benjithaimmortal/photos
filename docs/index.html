@@ -253,6 +253,8 @@
   
 
 
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
   // let divs = document.querySelectorAll("img");
   // let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
@@ -260,14 +262,32 @@
   // randomDiv.map((x)=>{document.body.innerHTML+=`<img 
   // class='snap' src='${x.src}' alt='${x.alt}'>`
   // });
+  document.addEventListener("DOMContentLoaded", function(){
 
-  let contentDiv = document.querySelector('.content');
-  let divs = document.querySelectorAll("img");
-  let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
-  contentDiv.innerHTML="";
-  randomDiv.map((x)=>{contentDiv.innerHTML+=`<img 
-  class='snap' src='${x.src}' alt='${x.alt}'>`   
+    let contentDiv = document.querySelector('.content');
+    let divs = document.querySelectorAll("img");
+    let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
+    contentDiv.innerHTML="";
+    randomDiv.map((x)=>{contentDiv.innerHTML+=`<img 
+    class='snap' src='${x.src}' alt='${x.alt}'>`   
+    });
+
+    var elem = document.querySelector('.content');
+    var msnry = new Masonry( '.content', {
+      // options
+      itemSelector: '.snap',
+      // columndWidth: 25,
+      percentPosition: true,
+      transitionDuration: 0
+    });
+
+    imagesLoaded( elem ).on('progress', function(){
+      msnry.layout();
+    });
+
   });
+
+
 
 </script>
     </div>

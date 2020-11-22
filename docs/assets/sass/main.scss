@@ -118,7 +118,7 @@ li {
 
 
 .snap {
-  width: 100%;
+  width: calc(100% / 3);
   // display: none;
   height: auto;
 }
@@ -135,7 +135,17 @@ li {
   html, body {
     font: 300 16px/1.2 $font-fam;
   }
+  .snap {
+    width: 50%;
+  }
 }
+
+@media (max-width: 501px) {
+  .snap {
+    width: 100%;
+  }
+}
+
 
 @media (max-width: 401px) {
   nav .link:first-of-type { padding-left: unset; }
