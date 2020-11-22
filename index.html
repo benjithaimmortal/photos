@@ -9,44 +9,40 @@ img_count: 41
 
 {% for indexer in (1..page.img_count) %}
   {% if indexer < 10 %}
-   <img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer | prepend: '0' }}.jpg' alt=''>
+  <a href='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer | prepend: '0' }}.jpg' target='_blank' class='snap' rel='noopener noreferrer'>
+    <img src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer | prepend: '0' }}.jpg' alt=''>
+  </a>
   {% else %}
-    <img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer }}.jpg' alt=''>
+  <a href='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer }}.jpg' target='_blank' class='snap' rel='noopener noreferrer'>
+    <img src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer }}.jpg' alt=''>
+  </a>
   {% endif %}
 {% endfor %}
 
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/lib/js/lightgallery.min.js"></script> -->
 <script>
-  // let divs = document.querySelectorAll("img");
-  // let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
-  // document.body.innerHTML="";
-  // randomDiv.map((x)=>{document.body.innerHTML+=`<img 
-  // class='snap' src='${x.src}' alt='${x.alt}'>`
-  // });
   document.addEventListener("DOMContentLoaded", function(){
 
     let contentDiv = document.querySelector('.content');
-    let divs = document.querySelectorAll("img");
+    let divs = document.querySelectorAll(".snap");
     let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
     contentDiv.innerHTML="";
-    randomDiv.map((x)=>{contentDiv.innerHTML+=`<img 
-    class='snap' src='${x.src}' alt='${x.alt}'>`   
-    });
+    randomDiv.map((x)=>{contentDiv.innerHTML+=`<a class='snap' href='${x.href}' target='${x.target}'><img src='${x.href}', alt=''></a>` });
 
     var elem = document.querySelector('.content');
     var msnry = new Masonry( '.content', {
       // options
       itemSelector: '.snap',
-      // columndWidth: 25,
       percentPosition: true,
-      transitionDuration: 0
+      transitionDuration: 0,
+      gutter: 3
     });
 
     imagesLoaded( elem ).on('progress', function(){
       msnry.layout();
     });
-
   });
 
 
