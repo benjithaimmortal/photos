@@ -4,29 +4,31 @@
 
 layout: home
 title: home
+img_count: 41
 ---
 
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-01.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-02.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-03.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-04.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-05.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-06.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-07.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-08.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-09.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-10.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-11.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-12.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-13.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-14.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-15.jpg' alt=''>
-<img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-16.jpg' alt=''>
+{% for indexer in (1..page.img_count) %}
+  {% if indexer < 10 %}
+   <img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer | prepend: '0' }}.jpg' alt=''>
+  {% else %}
+    <img class='snap' src='{{ site.baseurl }}/assets/images/photography/Photos-{{ indexer }}.jpg' alt=''>
+  {% endif %}
+{% endfor %}
 
+<script>
+  // let divs = document.querySelectorAll("img");
+  // let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
+  // document.body.innerHTML="";
+  // randomDiv.map((x)=>{document.body.innerHTML+=`<img 
+  // class='snap' src='${x.src}' alt='${x.alt}'>`
+  // });
 
+  let contentDiv = document.querySelector('.content');
+  let divs = document.querySelectorAll("img");
+  let randomDiv = Array.from(divs).sort(()=>{return 0.5 - Math.random();});
+  contentDiv.innerHTML="";
+  randomDiv.map((x)=>{contentDiv.innerHTML+=`<img 
+  class='snap' src='${x.src}' alt='${x.alt}'>`   
+  });
 
-<div class='container-wide'>
-
-  Photos gon' go here bruv
-</div>
-
+</script>

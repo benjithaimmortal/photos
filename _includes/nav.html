@@ -1,5 +1,5 @@
 <div class='bar'>
-  <a href='{{ site.baseurl }}/' class='logo' aria-label="Navigate Home">
+  <a href='https://www.monjibram.com/' class='logo' aria-label="Navigate Home">
     <svg width="90px" height="47px" viewBox="0 0 90 47" role="img">
       <title>Site Logo</title>
       <g class="full-logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -20,8 +20,9 @@
       <a href='{{ site.baseurl }}/' class='link'>Home</a>
     {% endif %} -->
 
+    <a href='{{ site.baseurl }}/' class='active link'>Shuffle</a>
 
-    {% for item in site.html_pages %}
+    <!-- {% for item in site.html_pages %}
       {% if (item.title) and (item.title != "Blog") and (item.url != "/") %}
         {% if page.url == item.url %}
           <a href='{{ site.baseurl }}{{ item.url }}' class='active link'>{{ item.title }}</a>
@@ -41,6 +42,6 @@
           {% endif %}
         {% endif %}
       {% endif %}
-    {% endfor %}
+    {% endfor %} -->
   </nav>
 </div>
